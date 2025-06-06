@@ -8,11 +8,10 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: BIGINT
+                  type: serial
                   constraints:
                     primaryKey: true
                     autoIncrement: true
-                    nullable: false
               - column:
                   name: subscription_name
                   type: VARCHAR(50)
