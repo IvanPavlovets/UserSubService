@@ -8,7 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -50,6 +52,15 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
         }
         return result;
+    }
+
+    public List<Map<String, Object>> getTopSubscriptions() {
+        return subscriptionRep.findTop3PopularServices().stream()
+                .map(result -> Map.of(
+                        "serviceName", result[0],
+                        "count", result[1]
+                ))
+                .collect(Collectors.toList());
     }
 
 }

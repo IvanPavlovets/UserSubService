@@ -40,4 +40,5 @@ public class SubscriptionController {
                 subscription.isPresent() ? ok : notFound
         );
     }
+
 }
